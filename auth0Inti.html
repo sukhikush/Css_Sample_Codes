@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div id="hiw-login-container"></div>
+
+  <script src="https://cdn.auth0.com/js/lock/11.30.0/lock.min.js"></script>
+  <script>
+    var options = {
+      container: 'hiw-login-container',
+      params: {
+        scope: 'openid email roles permission  picture'
+      },
+      auth: {
+        responseMode: 'form_post',
+        responseType: 'token',
+        redirectUrl: 'www.google.com'
+      },
+      allowSignUp: false,
+      theme: {
+        logo: 'https://nexsales.com/wp-content/uploads/2021/04/nexsales_logo-removebg-preview-2.png'
+      },
+      languageDictionary: {
+        title: "Data Automation"
+      },
+    };
+
+    // initialize
+    var lock = new Auth0Lock(
+      '76BX9Ztg4ljbrI0mFzqYI6mN01mvoqRS',
+      'innovation.auth0.com',
+      options
+    )
+
+    // render
+    lock.show()
+  </script>
+</body>
+
+</html>

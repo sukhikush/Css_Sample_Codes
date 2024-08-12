@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Intersection Observer API Example</title>
+  <style>
+    .blankBlock{
+      height: 900px;
+      background-color: lightgray;
+    }
+    .imageHolder{
+      position: relative;
+      border: 1px solid blue;
+    }
+    .container{
+      box-sizing: border-box;
+      display: flex;
+      flex-flow: row;
+      width: 100%;
+      height: 100%;
+    }
+    .container .left{
+      /* height: 90%; */
+      margin-top: 0;
+      position: relative;
+      width: 100%;
+      color: whitesmoke;
+
+    display: flex;
+    justify-content: center;
+    }
+    .container .left .stickeyBlk{
+      height: 27%;
+      position: -webkit-sticky!important;
+      position: sticky!important;
+      width: 90%;
+      top: 30px;
+    }
+    .container .left .stickeyBlk div{
+      height: 95%;
+      opacity:0;
+      position: absolute;
+      top: 0;
+      transition: all .5s ease-in;
+      width: 100%;
+      text-align: center;
+    font-weight: bold;
+    }
+    .container .left .stickeyBlk div span{
+      font-size: 25px;
+      color: red;
+    }
+    .container .left .stickeyBlk div img{
+          height: 92%;
+        object-fit: contain;
+        /* -webkit-transform: scale(1.1); */
+        /* transform: scale(1.1); */
+        width: 100%;
+    }
+    .container .left .stickeyBlk div.active{
+      opacity: 1;
+    }
+    .container .right{
+      display: flex;
+      flex-direction: column;
+      height: 90%;
+      justify-content: space-between;
+      margin-top: 0;
+      width: 100%;
+    }
+    .container .right div{
+      padding: 80px;
+    /* margin-bottom: 50px; */
+    padding-bottom: 130px;
+    border-left: 4px solid lightblue;
+    margin-top: -16px;
+    color: antiquewhite;
+    }
+    .container .right div.round-item:first-child{
+      padding-top: 0px;
+    }
+    .container .right div b{
+      color: aliceblue;
+      font-size: 43px;
+      margin-left: -30px;
+    }
+    .round-item::before{
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      -moz-border-radius: 7.5px;
+      -webkit-border-radius: 7.5px;
+      border-radius: 100%;
+      background-color: lightblue;
+      left: -97px;
+      top: -10px;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="blankBlock">
+    
+  </div>
+  <div class="imageHolder" style="background-color:#06112d;height:3000px;">
+    <div class="container" style="padding-top: 123px;">
+      <div class="left">
+        <div class="stickeyBlk">
+          <div id="img-1" class="imgBlk"><span>Image Block 1</span><img src="https://img.freepik.com/premium-photo/camping-forest-morning-scene-with-tourist-tent-green-forest-near-lake_1418-787.jpg" alt=""></div>
+          <div id="img-2" class="imgBlk"><span>Image Block 2</span><img src="https://img.freepik.com/premium-photo/web-designer-brainstorming-strategy-plan-colorful-sticky-notes-with-things-office-board-user-experience-ux-concept_1418-2863.jpg" alt=""></div>
+          <div id="img-3" class="imgBlk"><span>Image Block 3</span><img src="https://img.freepik.com/premium-photo/judge-gavel-with-justice-lawyers-having-team-meeting-law-firm-background-concepts-law-legal-services_1418-2879.jpg" alt=""></div>
+          <div id="img-4" class="imgBlk"><span>Image Block 4</span><img src="https://images.pexels.com/photos/2765586/pexels-photo-2765586.jpeg" alt=""></div>
+          <div id="img-5" class="imgBlk"><span>Image Block 5</span><img src="https://img.freepik.com/premium-photo/camping-forest-morning-scene-with-tourist-tent-green-forest-near-lake_1418-780.jpg" alt=""></div>
+        </div>
+      </div>
+      <div class="right">
+        <div ref = "img-1" class="round-item"><b>Content 1</b><p>The English word "mango" (plural "mangoes" or "mangos") originated from the Malayalam word māṅṅa (or mangga) via Dravidian mankay and Portuguese manga during the spice trade period with South India in the 15th and 16th centuries.</p>
+    <p>Mango is mentioned by Hendrik van Rheede, the Dutch commander of the Malabar region in his 1678 book, Hortus Malabaricus, about plants having economic value. When mangoes were first imported to the American colonies in the 17th century, they had to be pickled because of lack of refrigeration. Other fruits were also pickled and came to be called "mangoes", especially bell peppers, and in the 18th century, the word "mango" became a verb meaning "to pickle".</p>
+    <p>Mango trees grow to 35–40 m (115–131 ft) tall, with a crown radius of 10 m (33 ft). The trees are long-lived, as some specimens still fruit after 300 years. In deep soil, the taproot descends to a depth of 6 m (20 ft), with profuse, wide-spreading feeder roots and anchor roots penetrating deeply into the soil. The leaves are evergreen, alternate, simple, 15–35 cm (5.9–13.8 in) long, and 6–16 cm (2.4–6.3 in) broad; when the leaves are young they are orange-pink, rapidly changing to a dark, glossy red, then dark green as they mature. The flowers are produced in terminal panicles 10–40 cm (3.9–15.7 in) long; each flower is small and white with five petals 5–10 mm (0.20–0.39 in) long, with a mild, sweet fragrance. Over 500 varieties of mangoes are known, many of which ripen in summer, while some give a double crop. The fruit takes four to five months from flowering to ripen.</p></div>
+        <div ref = "img-2" class="round-item"><b>Contect 2</b><p>The English word "mango" (plural "mangoes" or "mangos") originated from the Malayalam word māṅṅa (or mangga) via Dravidian mankay and Portuguese manga during the spice trade period with South India in the 15th and 16th centuries.</p>
+    <p>Mango is mentioned by Hendrik van Rheede, the Dutch commander of the Malabar region in his 1678 book, Hortus Malabaricus, about plants having economic value. When mangoes were first imported to the American colonies in the 17th century, they had to be pickled because of lack of refrigeration. Other fruits were also pickled and came to be called "mangoes", especially bell peppers, and in the 18th century, the word "mango" became a verb meaning "to pickle".</p>
+    <p>Mango trees grow to 35–40 m (115–131 ft) tall, with a crown radius of 10 m (33 ft). The trees are long-lived, as some specimens still fruit after 300 years. In deep soil, the taproot descends to a depth of 6 m (20 ft), with profuse, wide-spreading feeder roots and anchor roots penetrating deeply into the soil. The leaves are evergreen, alternate, simple, 15–35 cm (5.9–13.8 in) long, and 6–16 cm (2.4–6.3 in) broad; when the leaves are young they are orange-pink, rapidly changing to a dark, glossy red, then dark green as they mature. The flowers are produced in terminal panicles 10–40 cm (3.9–15.7 in) long; each flower is small and white with five petals 5–10 mm (0.20–0.39 in) long, with a mild, sweet fragrance. Over 500 varieties of mangoes are known, many of which ripen in summer, while some give a double crop. The fruit takes four to five months from flowering to ripen.</p></div>
+        <div ref = "img-3" class="round-item"><b>Contect 3</b><p>The English word "mango" (plural "mangoes" or "mangos") originated from the Malayalam word māṅṅa (or mangga) via Dravidian mankay and Portuguese manga during the spice trade period with South India in the 15th and 16th centuries.</p>
+    <p>Mango is mentioned by Hendrik van Rheede, the Dutch commander of the Malabar region in his 1678 book, Hortus Malabaricus, about plants having economic value. When mangoes were first imported to the American colonies in the 17th century, they had to be pickled because of lack of refrigeration. Other fruits were also pickled and came to be called "mangoes", especially bell peppers, and in the 18th century, the word "mango" became a verb meaning "to pickle".</p>
+    <p>Mango trees grow to 35–40 m (115–131 ft) tall, with a crown radius of 10 m (33 ft). The trees are long-lived, as some specimens still fruit after 300 years. In deep soil, the taproot descends to a depth of 6 m (20 ft), with profuse, wide-spreading feeder roots and anchor roots penetrating deeply into the soil. The leaves are evergreen, alternate, simple, 15–35 cm (5.9–13.8 in) long, and 6–16 cm (2.4–6.3 in) broad; when the leaves are young they are orange-pink, rapidly changing to a dark, glossy red, then dark green as they mature. The flowers are produced in terminal panicles 10–40 cm (3.9–15.7 in) long; each flower is small and white with five petals 5–10 mm (0.20–0.39 in) long, with a mild, sweet fragrance. Over 500 varieties of mangoes are known, many of which ripen in summer, while some give a double crop. The fruit takes four to five months from flowering to ripen.</p></div>
+        <div ref = "img-4" class="round-item"><b>Contect 4</b><p>The English word "mango" (plural "mangoes" or "mangos") originated from the Malayalam word māṅṅa (or mangga) via Dravidian mankay and Portuguese manga during the spice trade period with South India in the 15th and 16th centuries.</p>
+    <p>Mango is mentioned by Hendrik van Rheede, the Dutch commander of the Malabar region in his 1678 book, Hortus Malabaricus, about plants having economic value. When mangoes were first imported to the American colonies in the 17th century, they had to be pickled because of lack of refrigeration. Other fruits were also pickled and came to be called "mangoes", especially bell peppers, and in the 18th century, the word "mango" became a verb meaning "to pickle".</p>
+    <p>Mango trees grow to 35–40 m (115–131 ft) tall, with a crown radius of 10 m (33 ft). The trees are long-lived, as some specimens still fruit after 300 years. In deep soil, the taproot descends to a depth of 6 m (20 ft), with profuse, wide-spreading feeder roots and anchor roots penetrating deeply into the soil. The leaves are evergreen, alternate, simple, 15–35 cm (5.9–13.8 in) long, and 6–16 cm (2.4–6.3 in) broad; when the leaves are young they are orange-pink, rapidly changing to a dark, glossy red, then dark green as they mature. The flowers are produced in terminal panicles 10–40 cm (3.9–15.7 in) long; each flower is small and white with five petals 5–10 mm (0.20–0.39 in) long, with a mild, sweet fragrance. Over 500 varieties of mangoes are known, many of which ripen in summer, while some give a double crop. The fruit takes four to five months from flowering to ripen.</p></div>
+        <div ref = "img-5" class="round-item"><b>Contect 5</b><p>The English word "mango" (plural "mangoes" or "mangos") originated from the Malayalam word māṅṅa (or mangga) via Dravidian mankay and Portuguese manga during the spice trade period with South India in the 15th and 16th centuries.</p>
+    <p>Mango is mentioned by Hendrik van Rheede, the Dutch commander of the Malabar region in his 1678 book, Hortus Malabaricus, about plants having economic value. When mangoes were first imported to the American colonies in the 17th century, they had to be pickled because of lack of refrigeration. Other fruits were also pickled and came to be called "mangoes", especially bell peppers, and in the 18th century, the word "mango" became a verb meaning "to pickle".</p>
+    <p>Mango trees grow to 35–40 m (115–131 ft) tall, with a crown radius of 10 m (33 ft). The trees are long-lived, as some specimens still fruit after 300 years. In deep soil, the taproot descends to a depth of 6 m (20 ft), with profuse, wide-spreading feeder roots and anchor roots penetrating deeply into the soil. The leaves are evergreen, alternate, simple, 15–35 cm (5.9–13.8 in) long, and 6–16 cm (2.4–6.3 in) broad; when the leaves are young they are orange-pink, rapidly changing to a dark, glossy red, then dark green as they mature. The flowers are produced in terminal panicles 10–40 cm (3.9–15.7 in) long; each flower is small and white with five petals 5–10 mm (0.20–0.39 in) long, with a mild, sweet fragrance. Over 500 varieties of mangoes are known, many of which ripen in summer, while some give a double crop. The fruit takes four to five months from flowering to ripen.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="blankBlock">
+    
+  </div>
+  
+  <script>
+    let observer;
+    let ratio = 0.8;
+    let options = {
+      root: null,
+      rootMargin: "0%",
+      threshold:ratio,
+    };
+    
+    observer = new IntersectionObserver((entries, observer)=>{
+      entries.forEach((entry) => {
+          if (entry.intersectionRatio) {
+            var t = entry.target.getAttribute("ref");
+            var element = document.querySelectorAll('.container .stickeyBlk div#'+t)[0];
+            if(entry.intersectionRatio < ratio){
+              element.classList.remove("active"); 
+            }else{
+              element.classList.add("active");
+            }
+          }
+        });
+    }, options);
+    var elements = document.querySelectorAll('.container .right div');
+    elements.forEach((element)=>{
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
